@@ -22,7 +22,7 @@ scenario('Create product and add the new feature', client => {
   test('should add product quantity', () => client.addProductQuantity());
   test('should add product price', () => client.addProductPrice());
   test('should add product feature', () => client.addProductTypeFeature());
-  test('should publish the product en ligne', () => client.productEnligne());
+  test('should publish the product en ligne', () => client.productEnLigne());
   test('should save the product', () => client.saveProduct());
   test('should close the green validation', () => client.closeGreenValidation());
   test('should sign out BO', () => client.signoutBO());
@@ -32,7 +32,7 @@ scenario('Check the created feature in Front Office', client => {
   test('should open the browser', () => client.open());
   test('should sign in FO', () => client.signinFO());
   test('should change front office language to english', () => client.languageChange('english'));
-  test('should search for the product', () => client.searchForProduct('Feature'));
+  test('should search for the product', () => client.searchForProduct());
   test('should check the created feature in the Front Office', () => client.checkCreatedFeature());
   test('should sign in FO', () => client.signoutFO());
 }, 'feature', true);

@@ -1,7 +1,7 @@
-var PrestashopClient = require('./prestashop_client');
+var CommonClient = require('./common_client');
 var {selector} = require('../globals.webdriverio.js');
 
-class CreateProduct extends PrestashopClient {
+class CreateProduct extends CommonClient {
 
   goToProductMenu() {
     return this.client
@@ -17,9 +17,10 @@ class CreateProduct extends PrestashopClient {
   }
 
   addProductName(name) {
+    global.product_id = new Date().getTime();
     return this.client
       .waitForExist(selector.BO.AddProductPage.product_name_input, 90000)
-      .setValue(selector.BO.AddProductPage.product_name_input, name +' '+ global.date_time)
+      .setValue(selector.BO.AddProductPage.product_name_input, name +' '+ global.product_id)
   }
 
   addProductQuantity() {
@@ -73,11 +74,10 @@ class CreateProduct extends PrestashopClient {
       .click('//*[@id="select2-form_step1_features_0_feature-results"]/li')
       .pause(2000)
       .selectByVisibleText(selector.BO.AddProductPage.feature_value_select,'feature value')
-      .pause(1000)
   }
 
 
-  productEnligne() {
+  productEnLigne() {
     return this.client
       .pause(1000)
       .click(selector.BO.AddProductPage.product_online_toggle)
@@ -87,6 +87,7 @@ class CreateProduct extends PrestashopClient {
     return this.client
       .waitForExist(selector.BO.AddProductPage.save_product_button, 90000)
       .click(selector.BO.AddProductPage.save_product_button)
+      .pause(3000)
   }
 
   closeGreenValidation() {

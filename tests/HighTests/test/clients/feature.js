@@ -1,10 +1,10 @@
-var PrestashopClient = require('./prestashop_client');
+var CommonClient = require('./common_client');
 var {selector} = require('../globals.webdriverio.js');
 
 global.featureName = 'Feature' + new Date().getTime();
 
 
-class Feature extends PrestashopClient {
+class Feature extends CommonClient {
 
   goToFeatureList() {
     return this.client
@@ -58,10 +58,10 @@ class Feature extends PrestashopClient {
       .click(selector.BO.CatalogPage.FeatureSubmenu.save_value_button);
   }
 
-  searchForProduct(name) {
+  searchForProduct() {
     return this.client
       .waitForExist(selector.FO.SearchProductPage.product_search_input, 90000)
-      .setValue(selector.FO.SearchProductPage.product_search_input,name)
+      .setValue(selector.FO.SearchProductPage.product_search_input,product_id)
       .click(selector.FO.SearchProductPage.product_search_button)
       .click(selector.FO.SearchProductPage.product_result_name);
   }

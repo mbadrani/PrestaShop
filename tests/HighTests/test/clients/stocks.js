@@ -1,9 +1,9 @@
-var PrestashopClient = require('./prestashop_client');
+var CommonClient = require('./common_client');
 var {selector} = require('../globals.webdriverio.js');
 
 global.productQuantity = '';
 
-class ModifyQuantity extends PrestashopClient {
+class ModifyQuantity extends CommonClient {
 
   goToCatalogStock() {
     return this.client
@@ -102,6 +102,7 @@ class ModifyQuantity extends PrestashopClient {
     return this.client
       .waitForExist(selector.BO.CatalogPage.StockSubmenu.Stock.save_fourth_product_quantity_button, 90000)
       .click(selector.BO.CatalogPage.StockSubmenu.Stock.save_fourth_product_quantity_button)
+      .pause(2000)
   }
 
   checkMovement(order, quantity, variation, type) {
