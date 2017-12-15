@@ -1,6 +1,13 @@
 const {getClient} = require('../common.webdriverio.js');
 const {selector} = require('../globals.webdriverio.js');
 var path = require('path');
+var http = require('http');
+var fs = require('fs');
+
+var PDF = require('pdfkit');            //including the pdfkit module
+var request = require('request');
+
+var pdfUtil = require('pdf-to-text');
 
 class CommonClient {
   constructor() {
@@ -25,9 +32,9 @@ class CommonClient {
 
   goToSubtabMenuPage(menuSelector, selector) {
     return this.client
-        .waitForExist(menuSelector, 90000)
-        .moveToObject(menuSelector)
-        .waitForExistAndClick(selector)
+      .waitForExist(menuSelector, 90000)
+      .moveToObject(menuSelector)
+      .waitForExistAndClick(selector)
   }
 
   checkOnBoardingModal() {
@@ -53,8 +60,8 @@ class CommonClient {
 
   successPanel(index) {
     return this.client
-      .waitForExist(selector.CatalogPageBO.success_panel)
-      .then(() => this.client.getText(selector.CatalogPageBO.success_panel))
+      .waitForExist(selector.CatalogPage.success_panel)
+      .then(() => this.client.getText(selector.CatalogPage.success_panel))
       .then((text) => expect(text.substr(2)).to.be.equal(index));
   }
 
@@ -109,11 +116,41 @@ class CommonClient {
       .chooseFile(selector, path.join(__dirname, '..', 'datas', picture))
   }
 
-  checkTextValue(selector, message) {
-    return this.client
-      .waitForVisible(selector, 90000)
-      .then(() => this.client.getText(selector))
-      .then((text) => expect(text).to.be.equal(message));
+  getTextInVar(selector, globalVar, split = false) {
+    if (split) {
+      return this.client
+        .waitForExist(selector, 9000)
+        .then(() => this.client.getText(selector))
+        .then((variable) => global.tab[globalVar] = variable.split(': ')[1])
+    } else {
+      return this.client
+        .waitForExist(selector, 9000)
+        .then(() => this.client.getText(selector))
+        .then((variable) => global.tab[globalVar] = variable)
+    }
+  }
+
+  checkTextValue(selector, textToCheckWith, parameter = 'equal') {
+    switch (parameter) {
+      case "contain":
+        return this.client
+          .waitForExist(selector, 9000)
+          .then(() => this.client.getText(selector))
+          .then((text) => expect(text).to.contain(textToCheckWith));
+        break;
+      case "equal":
+        return this.client
+          .waitForExist(selector, 9000)
+          .then(() => this.client.getText(selector))
+          .then((text) => expect(text).to.equal(textToCheckWith));
+        break;
+      case "notequal":
+        return this.client
+          .waitForExist(selector, 9000)
+          .then(() => this.client.getText(selector))
+          .then((text) => expect(text).to.not.equal(textToCheckWith));
+        break;
+    }
   }
 
   uploadPicture(picture, selector, className = "dz-hidden-input") {
@@ -130,12 +167,34 @@ class CommonClient {
    * @param search_button
    * @param value
    * @returns {*}
-     */
+   */
   searchByValue(search_input, search_button, value) {
     return this.client
       .waitAndSetValue(search_input, value)
       .waitForExistAndClick(search_button)
   }
+
+  /**
+   * This function allows to download a pdf document and check the existence of string in it
+   * @param folderPath
+   * @param fileName
+   * @param text
+   * @returns {*}
+   */
+  checkDocument(folderPath, fileName, text) {
+    function verify_text_existence(positionToVerify) {
+      if (positionToVerify == -1) {
+        throw(err)
+      }
+    }
+    pdfUtil.pdfToText(folderPath + fileName + '.pdf', function (err, data) {
+      if (err) throw(err);
+      verify_text_existence(data.indexOf(text))
+    });
+    return this.client
+      .pause(5000)
+  }
+
 }
 
 module.exports = CommonClient;
