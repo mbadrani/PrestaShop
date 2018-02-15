@@ -44,6 +44,7 @@
     "gulp-cli": "^2.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
+    "maildev": "^1.0.0-rc3",
     "mochawesome": "^2.3.0",
     "nodemailer": "^4.0.1",
     "pdf-to-text": "0.0.6",
