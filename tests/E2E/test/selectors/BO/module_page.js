@@ -56,6 +56,7 @@ module.exports = {
     modules_number: '[class="module-sorting-search-wording"]',
     welcome_voucher_code:'//*[@id="NW_VOUCHER_CODE"]',
     save_newsletter_settings_button:'//*[@id="module_form_submit_btn"]',
-    module_save_confirmation_success_msg:'//div[contains(@class,"module_confirmation")]'
+    module_save_confirmation_success_msg:'//div[contains(@class,"module_confirmation")]',
+    newsletter_module_configuration_button:'//*[@id="modules-list-container-theme"]//button[contains(@class,"module_action_menu_configure")]'
   }
 };
