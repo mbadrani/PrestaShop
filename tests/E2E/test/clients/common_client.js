@@ -308,6 +308,9 @@ class CommonClient {
       .isVisible(selector)
       .then((isVisible) => expect(isVisible).to.be.false)
   }
+  snewWindow(link){
+    return this.client.newWindow(link, 'test', 'width=420,height=230,resizable,scrollbars=yes,status=1')
+  }
 }
 
 module.exports = CommonClient;

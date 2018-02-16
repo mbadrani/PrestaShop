@@ -5,6 +5,7 @@ module.exports = {
     zip_file_input: '//*[@id="importDropzone"]/input',
     installed_message: '//*[@id="importDropzone"]/div[3]/p[1]',
     close_modal_button: '//*[@id="module-modal-import-closing-cross"]',
+    /** ToDo : Fixing selector search input , search button in module page **/
     search_input: 'div.pstaggerAddTagWrapper > input',
     search_button: '.btn.btn-primary.pull-right.search-button',
     page_loaded: '.module-search-result-wording',
@@ -42,7 +43,6 @@ module.exports = {
     rollback_version: '//*[@id="restoreBackupContainer"]//option[2]',
     rollback_button: '//*[@id="rollback"]',
     success_msg: '(//p[contains(@class,"alert-success")])[1]/p',
-    modules_number: '[class="module-sorting-search-wording"]',
     module_list: '//*[@id="modules-list-container-all"]/div[%I]',
     sort_select: '//select[contains(@class,"sort-component")]',
     maintenance_shop: '//*[@id="currentConfiguration"]//input[contains(@name,"putUnderMaintenance")]',
@@ -53,6 +53,9 @@ module.exports = {
     backdrop_modale:'//div[contains(@class, "fade show")]',
     //List of modules after search
     list_module: '//*[@id="modules-list-container-all"]/div[%I]',
-    modules_number: '[class="module-sorting-search-wording"]'
+    modules_number: '[class="module-sorting-search-wording"]',
+    welcome_voucher_code:'//*[@id="NW_VOUCHER_CODE"]',
+    save_newsletter_settings_button:'//*[@id="module_form_submit_btn"]',
+    module_save_confirmation_success_msg:'//div[contains(@class,"module_confirmation")]'
   }
 };
