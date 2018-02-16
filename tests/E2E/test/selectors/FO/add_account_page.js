@@ -3,7 +3,7 @@ module.exports = {
     create_button: '[data-link-action="display-register-form"]',
     firstname_input: '[name="firstname"]',
     lastname_input: '[name="lastname"]',
-    email_input: '[name="email"]',
+    email_input: '//*[@id="customer-form"]//input[contains(@name,"email")]',
     password_input: '[name="password"]',
     save_account_button: '[data-link-action="save-customer"]',
     radio_button_gender: '(//*[@id="customer-form"]//input[contains(@name,"id_gender")])[2]',
@@ -31,6 +31,7 @@ module.exports = {
     order_button: '//*[@id="payment-confirmation"]//button',
     confirmed_order_message: '//*[@id="content-hook_order_confirmation"]//h3[contains(@class, "card-title")]',
     email_sent_message: '//*[@id="content-hook_order_confirmation"]//p',
-    notification_save_adr: '//*[@id="notifications"]//li'
+    notification_save_adr: '//*[@id="notifications"]//li',
+    save_newsletter_settings_button:'//*[@id="customer-form"]//input[contains(@name, "newsletter")]'
   }
 };

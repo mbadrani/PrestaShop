@@ -308,6 +308,7 @@ class CommonClient {
       .isVisible(selector)
       .then((isVisible) => expect(isVisible).to.be.false)
   }
+
 }
 
 module.exports = CommonClient;

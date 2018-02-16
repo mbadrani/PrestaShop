@@ -37,18 +37,18 @@ scenario('Create "Product"', () => {
   scenario('Login in the Back Office', client => {
     test('should open the browser', () => client.open());
     test('should login successfully in the Back Office', () => client.signInBO(AccessPageBO));
-  }, 'product/product');
+  }, 'common_client');
   common.createProduct(AddProductPage, productData);
   scenario('Logout from the Back Office', client => {
     test('should logout successfully from the Back Office', () => client.signOutBO());
-  }, 'product/product');
-}, 'product/product', true);
+  }, 'common_client');
+}, 'common_client', true);
 
 scenario('Check "Specific price"', () => {
   scenario('Login in the Front Office', client => {
     test('should open the browser', () => client.open());
     test('should login successfully in the Front Office', () => client.signInFO(AccessPageFO));
-  }, 'product/product');
+  }, 'common_client');
   scenario('Check the created "Specific price" in the Front Office', client => {
     test('should change front office language to english', () => client.changeLanguage('english'));
     test('should search for the product', () => client.searchByValue(SearchProductPage.search_input, SearchProductPage.search_button, productData["name"] + date_time));
@@ -58,11 +58,11 @@ scenario('Check "Specific price"', () => {
     test('should click on "Add to cart" button  ', () => client.waitForExistAndClick(CheckoutOrderPage.add_to_cart_button));
     test('should click on "Proceed to checkout" button', () => client.waitForVisibleAndClick(CheckoutOrderPage.proceed_to_checkout_modal_button));
     test('should verify that the discount is equal to "-19.67%"', () => client.checkTextValue(CheckoutOrderPage.product_discount_details, '-19.67%'));
-  }, 'product/product');
+  }, 'common_client');
   scenario('Logout from the Front Office', client => {
     test('should logout successfully from the Front Office', () => client.signOutFO(AccessPageFO));
-  }, 'product/product');
-}, 'product/product', true);
+  }, 'common_client');
+}, 'common_client', true);
 
 scenario('Create "Catalog price rule"', () => {
   scenario('Login in the Back Office', client => {
