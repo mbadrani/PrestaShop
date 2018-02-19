@@ -12,7 +12,11 @@ module.exports = {
       test('should go to the first product page', () => client.waitForExistAndClick(productPage.first_product));
       test('should select product "size M" ', () => client.waitAndSelectByValue(productPage.first_product_size, '2'));
       test('should select product "color Black"', () => client.waitForExistAndClick(productPage.first_product_color));
-      test('should set the product "quantity"', () => client.waitAndSetValue(productPage.first_product_quantity, "4"));
+      test('should set the product "quantity"', () => {
+        return promise
+          .then(() => client.waitAndSetValue(productPage.first_product_quantity, "4"))
+          .then(() => client.getTextInVar(CheckoutOrderPage.product_current_price, "first_basic_price"));
+      });
       test('should click on "Add to cart" button  ', () => client.waitForExistAndClick(CheckoutOrderPage.add_to_cart_button));
       test('should click on proceed to checkout button 1', () => client.waitForVisibleAndClick(CheckoutOrderPage.proceed_to_checkout_modal_button));
       /**
@@ -82,6 +86,7 @@ module.exports = {
             .then(() => client.getTextInVar(CheckoutOrderPage.shipping_method, "method", true))
             .then(() => client.getTextInVar(CheckoutOrderPage.order_shipping_prince_value, "shipping_price"))
         });
+        test('should check that the basic price is equal to "22,94 €"', () => client.checkTextValue(CheckoutOrderPage.order_basic_price, global.tab["first_basic_price"]));
       }, 'common_client');
     }, 'common_client');
   },
