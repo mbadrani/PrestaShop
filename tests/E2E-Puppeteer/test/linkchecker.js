@@ -5,6 +5,7 @@ const fs = require('fs');
 require('events').EventEmitter.prototype._maxListeners = Infinity;
 
 
+//maybe add tracing option : https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-tracing
 let URL_FO = process.env.URL_FO || 'http://localhost/prestashop/';
 let URL_BO = process.env.URL_BO || 'http://localhost/prestashop/admin-dev/';
 let EMAIL = process.env.LOGIN || 'demo@prestashop.com';
