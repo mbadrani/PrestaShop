@@ -10,3 +10,37 @@ Definition of Done
 - Uimap (POM)
 - dockerfile
 - travis.yml (ajout de la sanity)
+
+# PrestaShop Functional Tests
+
+# prestashop_linkchecker
+This script will prevent the 400 and 500 http error code, by crawling your back office and front office
+
+# How to install your environment
+
+```bash
+git clone https://github.com/PrestaShop/PrestaShop/
+cd tests/E2E-puppeteer/test/
+npm i
+```
+
+#### Available command line parameters
+
+| Parameter           | Description      |
+|---------------------|----------------- |
+| URL                 | URL of your PrestaShop website (default to **http://localhost:8080/admin-dev/**) |
+| LOGIN               | LOGIN of your PrestaShop website (default to **demo@prestashop.com**) |
+| PASSWD              | PASSWD of your PrestaShop website (default to **prestashop_demo**) |
+
+#### Launch script
+If you want to run the Install test you can run the script **check_url_status.js**
+## With default values
+```
+node check_url_status.js
+```
+## With custom values
+```
+URL=http://url_of_back-office.com LOGIN=youremail@prestashop.com PASSWD=yourpassword node check_url_status.js
+```
+enjoy ;-)
+
