@@ -90,7 +90,10 @@ const login_BO = async (page) => {
 };
 
 const run = async () => {
-  let browser = await puppeteer.launch({ headless: HEADLESS });
+  let browser = await puppeteer.launch({
+    headless: HEADLESS,
+    args: ['--no-sandbox']
+  });
   let page = await browser.newPage();
 
   await interceptRequestAndResponse(page, office);
