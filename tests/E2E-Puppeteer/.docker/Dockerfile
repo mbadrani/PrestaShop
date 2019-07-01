@@ -17,7 +17,13 @@ RUN  apt-get update \
      && apt-get install -y google-chrome-unstable --no-install-recommends \
      && rm -rf /var/lib/apt/lists/*
 
+# instantiate args
+ENV URL_BO='http://localhost/prestashop/admin-dev/' \
+    URL_FO='http://localhost/prestashop/' \
+    EMAIL='demo@prestashop.com' \
+    PASSWORD='prestashop_demo' \
+    HEADLESS=true;
 # Install Puppeteer under /node_modules so it's available system-wide
-ADD package.json package-lock.json check.js /
+COPY ["package.json", "package-lock.json", "test/linkchecker.js", "./"]
 RUN npm install
-CMD ["node", "check.js", "--URL https://hesselsimonis-and-mohr.staging-prestashopready.net/backoffice/"]
+CMD ["node", "linkchecker.js"]
