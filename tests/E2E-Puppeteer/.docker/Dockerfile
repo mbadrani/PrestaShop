@@ -24,6 +24,6 @@ ENV URL_BO='http://localhost/prestashop/admin-dev/' \
     PASSWORD='prestashop_demo' \
     HEADLESS=true;
 # Install Puppeteer under /node_modules so it's available system-wide
-COPY ["package.json", "package-lock.json", "test/linkchecker.js", "./"]
+COPY ["package*.json", "test/linkchecker.js", "./"]
 RUN npm install
 CMD ["node", "linkchecker.js"]
