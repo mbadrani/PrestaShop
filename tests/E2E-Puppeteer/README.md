@@ -42,5 +42,10 @@ node check_url_status.js
 ```
 URL_BO=http://url_of_back-office.com URL_FO=http://url_of_front-office.com LOGIN=youremail@prestashop.com PASSWD=yourpassword node check_url_status.js
 ```
+## Run with docker
+```
+sudo docker build -t puppetter_linkchecker -f .docker/Dockerfile .
+sudo docker run -e URL_BO="http://localhost/prestashop_latest/admin-dev/" -e URL_FO="http://localhost/prestashop_latest/" --network="host" puppetter_linkchecker
+```
 enjoy ;-)
 
