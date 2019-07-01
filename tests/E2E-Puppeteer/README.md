@@ -44,8 +44,8 @@ URL_BO=http://url_of_back-office.com URL_FO=http://url_of_front-office.com LOGIN
 ```
 ## Run with docker
 ```
-sudo docker build -t puppetter_linkchecker -f .docker/Dockerfile .
-sudo docker run -e URL_BO="http://localhost/prestashop_latest/admin-dev/" -e URL_FO="http://localhost/prestashop_latest/" --network="host" puppetter_linkchecker
+sudo docker build -t puppeteer_linkchecker -f .docker/Dockerfile .
+sudo docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" --network="host" puppeteer_linkchecker
 ```
 enjoy ;-)
 
