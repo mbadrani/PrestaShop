@@ -40,7 +40,7 @@ node check_url_status.js
 ```
 ## With custom values
 ```
-URL=http://url_of_back-office.com LOGIN=youremail@prestashop.com PASSWD=yourpassword node check_url_status.js
+URL_BO=http://url_of_back-office.com URL_FO=http://url_of_front-office.com LOGIN=youremail@prestashop.com PASSWD=yourpassword node check_url_status.js
 ```
 enjoy ;-)
 
