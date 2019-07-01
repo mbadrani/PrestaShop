@@ -6,10 +6,10 @@ require('events').EventEmitter.prototype._maxListeners = Infinity;
 
 
 //maybe add tracing option : https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-tracing
-let URL_FO = process.env.URL_FO || 'http://localhost/prestashop/';
-let URL_BO = process.env.URL_BO || 'http://localhost/prestashop/admin-dev/';
+let URL_FO = process.env.URL_FO || 'http://localhost:8080/';
+let URL_BO = process.env.URL_BO || 'http://localhost:8080/admin-dev/';
 let EMAIL = process.env.LOGIN || 'demo@prestashop.com';
-let PASSWORD = process.env.PASSWD || 'prestashop_demo';
+let PASSWD = process.env.PASSWD || 'prestashop_demo';
 let HEADLESS = process.env.HEADLESS || true;
 let responses = [];
 let number_requests = {BO:0, FO:0};
@@ -20,7 +20,7 @@ let selector_FO = 'a[href]';
 let office = 'BO';
 let cur_href = null;
 
-const report_path = 'reports/';
+const report_path = './';
 
 let object = {
   stats: {
@@ -65,7 +65,7 @@ const interceptRequestAndResponse = async(page) => {
       responses.push({url: url, status: status});
     }
   });
-}
+};
 
 const checkStatusUrls = async (page, hrefs) => {
   //check urls
@@ -84,7 +84,7 @@ const checkStatusUrls = async (page, hrefs) => {
 
 const login_BO = async (page) => {
   await page.type('#email', EMAIL);
-  await page.type('#passwd', PASSWORD);
+  await page.type('#passwd', PASSWD);
   await page.click('#submit_login');
   await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
 };
@@ -152,6 +152,6 @@ const run = async () => {
 
 
 run()
-  .then(value => {
+  .then(() => {
     console.log("--------the end--------")
   }).catch(e => console.log(`error: ${e}`));

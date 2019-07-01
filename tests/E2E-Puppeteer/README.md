@@ -28,7 +28,8 @@ npm i
 
 | Parameter           | Description      |
 |---------------------|----------------- |
-| URL                 | URL of your PrestaShop website (default to **http://localhost:8080/admin-dev/**) |
+| URL_BO              | URL of your PrestaShop website Back Office (default to **http://localhost:8080/admin-dev/**) |
+| URL_FO              | URL of your PrestaShop website Front Office (default to **http://localhost:8080/**) |
 | LOGIN               | LOGIN of your PrestaShop website (default to **demo@prestashop.com**) |
 | PASSWD              | PASSWD of your PrestaShop website (default to **prestashop_demo**) |
 
@@ -40,12 +41,12 @@ node check_url_status.js
 ```
 ## With custom values
 ```
-URL_BO=http://url_of_back-office.com URL_FO=http://url_of_front-office.com LOGIN=youremail@prestashop.com PASSWD=yourpassword node check_url_status.js
+URL_BO="Your_Shop_URL_BO" URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Your_Password" node check_url_status.js
 ```
 ## Run with docker
 ```
 sudo docker build -t puppeteer_linkchecker -f .docker/Dockerfile .
-sudo docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" --network="host" puppeteer_linkchecker
+sudo docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Your_Password" --network="host" puppeteer_linkchecker
 ```
 enjoy ;-)
 
