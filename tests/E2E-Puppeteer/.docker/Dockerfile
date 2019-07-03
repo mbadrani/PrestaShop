@@ -18,12 +18,16 @@ RUN  apt-get update \
      && rm -rf /var/lib/apt/lists/*
 
 # instantiate args
-ENV URL_BO='http://localhost:8080/admin-dev/' \
-    URL_FO='http://localhost:8080/' \
-    EMAIL='demo@prestashop.com' \
-    PASSWD='prestashop_demo' \
-    HEADLESS=true;
+#ENV URL_BO='http://localhost:8080/admin-dev/' \
+#    URL_FO='http://localhost:8080/' \
+#    EMAIL='demo@prestashop.com' \
+#    PASSWD='prestashop_demo' \
+#    HEADLESS=true;
 # Install Puppeteer under /node_modules so it's available system-wide
-COPY ["package*.json", "test/linkchecker.js", "./"]
+#WORKDIR /var/www/html/tests/E2E-Puppeteer
+COPY ../package.json ./
+COPY ../test/linkchecker.js ./
+#COPY ["./test/package*.json", "./test/linkchecker.js", "./"]
 RUN npm install
+RUN mkdir reports
 CMD ["node", "linkchecker.js"]
