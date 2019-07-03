@@ -25,9 +25,8 @@ RUN  apt-get update \
 #    HEADLESS=true;
 # Install Puppeteer under /node_modules so it's available system-wide
 #WORKDIR /var/www/html/tests/E2E-Puppeteer
-COPY ./package.json ./
-COPY ./test/linkchecker.js ./
-#COPY ["./test/package*.json", "./test/linkchecker.js", "./"]
+COPY ["./package.json", "./test/linkchecker.js","./"]
+COPY ["./.docker/prestashop/wait-for-it.sh", "/tmp/"]
 RUN npm install
 RUN mkdir reports
 CMD ["node", "linkchecker.js"]
