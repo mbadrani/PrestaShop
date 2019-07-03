@@ -2,7 +2,9 @@ version: '3'
 
 services:
   tests:
-    build: .docker
+    build:
+      context: ./
+      dockerfile: ./.docker/Dockerfile
     environment:
       URL_FO: prestashop-web
       URL_BO: "${prestashop-web}/admin-dev"
@@ -21,7 +23,9 @@ services:
       - default
 
   prestashop:
-    build: .docker/prestashop
+    build:
+      context: ./
+      dockerfile: ./.docker/prestashop/Dockerfile
     environment:
       DB_SERVER: db
       PS_INSTALL_AUTO: 1

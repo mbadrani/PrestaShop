@@ -22,13 +22,13 @@ RUN apt install -y \
 
 RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
 
-COPY /wait-for-it.sh /tmp/wait-for-it.sh
+COPY ./.docker/prestashop/wait-for-it.sh /tmp/wait-for-it.sh
 
 # Repository update
 WORKDIR /var/www/html
 
 RUN usermod -u 1000 www-data
 
-COPY docker_run.sh /tmp/docker_run.sh
+COPY /.docker/prestashop/docker_run.sh /tmp/docker_run.sh
 
 CMD /tmp/wait-for-it.sh --timeout=60 --strict db:3306 -- /tmp/docker_run.sh
