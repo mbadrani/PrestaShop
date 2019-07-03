@@ -20,7 +20,7 @@ let selector_FO = 'a[href]';
 let office = 'BO';
 let cur_href = null;
 
-const report_path = './';
+const report_path = './reports/';
 
 let object = {
   stats: {

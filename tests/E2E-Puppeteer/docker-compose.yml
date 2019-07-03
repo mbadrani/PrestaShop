@@ -18,7 +18,7 @@ services:
     volumes:
       - .docker:/tmp/docker
       - ../../:/var/www/html/
-      - ./test/reports:/tmp/reports
+      - ./test/reports:/reports
     networks:
       - default
 
