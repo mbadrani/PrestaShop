@@ -53,5 +53,4 @@ docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" LOGIN="Your
 #Create Shop and running test
 docker-compose up --build
 ```
-enjoy :wink:
-
+Enjoy :wink: :v:
