@@ -1,6 +1,6 @@
 # PrestaShop Functional Tests with puppeteer
 
-##Definition of Done
+## Definition of Done
 - Architecture
 - Readme file (To update if necessary)
 - Package.json file
