@@ -48,7 +48,7 @@ docker build -t puppeteer_linkchecker -f .docker/Dockerfile .
 docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" -e LOGIN="Your_Login" -e PASSWD="Your_Password" --network="host" puppeteer_linkchecker
 ```
 
-##### Run with docker-compose
+#### Run with docker-compose
 ```bash
 #Create Shop and running test
 docker-compose up --build
