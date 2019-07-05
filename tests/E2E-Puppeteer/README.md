@@ -1,15 +1,5 @@
 # PrestaShop Functional Tests with puppeteer
 
-## Definition of Done
-- Architecture
-- Readme file (To update if necessary)
-- Package.json file
-- Content of .gitignore
-- Test directory with the new script
-- Tested locally / docker (Headless first)
-- Uimap (POM)
-- DockerFiles or docker-compose.yml
-
 ## prestashop_linkchecker (our first test)
 This script will prevent the 400 and 500 http error code, by crawling your back office and front office
 
