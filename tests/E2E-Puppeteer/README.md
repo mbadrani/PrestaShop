@@ -45,7 +45,7 @@ URL_BO="Your_Shop_URL_BO" URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Y
 #Build image
 docker build -t puppeteer_linkchecker -f .docker/Dockerfile .
 #Run test
-docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Your_Password" --network="host" puppeteer_linkchecker
+docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" -e LOGIN="Your_Login" -e PASSWD="Your_Password" --network="host" puppeteer_linkchecker
 ```
 
 ##### Run with docker-compose
