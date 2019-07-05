@@ -1,30 +1,27 @@
-## Here let's initialize our Puppeteer test
+# PrestaShop Functional Tests with puppeteer
 
-Definition of Done
-- architecture
-- readme (à mettre à jour si nécessaire)
-- package.json
-- .git-ignore
-- test directory avec script.js (headless first)
-- tested locally / docker
+##Definition of Done
+- Architecture
+- Readme file (To update if necessary)
+- Package.json file
+- Content of .gitignore
+- Test directory with the new script
+- Tested locally / docker (Headless first)
 - Uimap (POM)
-- dockerfile
-- travis.yml (ajout de la sanity)
+- DockerFiles or docker-compose.yml
 
-# PrestaShop Functional Tests
-
-# prestashop_linkchecker
+## prestashop_linkchecker (our first test)
 This script will prevent the 400 and 500 http error code, by crawling your back office and front office
 
-# How to install your environment
+### How to install your environment
 
 ```bash
 git clone https://github.com/PrestaShop/PrestaShop/
-cd tests/E2E-puppeteer/test/
+cd tests/E2E-puppeteer/
 npm i
 ```
 
-#### Available command line parameters
+### Available command line parameters
 
 | Parameter           | Description      |
 |---------------------|----------------- |
@@ -33,20 +30,28 @@ npm i
 | LOGIN               | LOGIN of your PrestaShop website (default to **demo@prestashop.com**) |
 | PASSWD              | PASSWD of your PrestaShop website (default to **prestashop_demo**) |
 
-#### Launch script
+### Launch script
 If you want to run the Install test you can run the script **check_url_status.js**
-## With default values
+#### With default values
 ```
 node check_url_status.js
 ```
-## With custom values
-```
+#### With custom values
+```bash
 URL_BO="Your_Shop_URL_BO" URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Your_Password" node check_url_status.js
 ```
-## Run with docker
+#### Run with docker
+```bash
+#Build image
+docker build -t puppeteer_linkchecker -f .docker/Dockerfile .
+#Run test
+docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Your_Password" --network="host" puppeteer_linkchecker
 ```
-sudo docker build -t puppeteer_linkchecker -f .docker/Dockerfile .
-sudo docker run -e URL_BO="Your_Shop_URL_BO" -e URL_FO="Your_Shop_URL_FO" LOGIN="Your_Login" PASSWD="Your_Password" --network="host" puppeteer_linkchecker
+
+##### Run with docker-compose
+```bash
+#Create Shop and running test
+docker-compose up --build
 ```
-enjoy ;-)
+enjoy :wink:
 
