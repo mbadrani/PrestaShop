@@ -35,7 +35,7 @@ before_script:
   - sleep 25
 
 script:
-  - mkdir screenshots
+  - mkdir reports
   - $TRAVIS_BUILD_DIR/node test/linkchecker.js
   - curl http://localhost/
 
