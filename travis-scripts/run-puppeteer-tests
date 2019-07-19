@@ -4,12 +4,11 @@ PROJECT_PATH=$(cd "$( dirname "$0" )/../" && pwd)
 
 /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_10.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :10 -ac -screen 0 1600x1200x16
 
-pushd $PROJECT_PATH/tests/Selenium
+pushd $PROJECT_PATH/tests/puppeteer
 cp -n settings.travis.js settings.js
 npm install --silent
-DISPLAY=:10 npm run selenium &> /dev/null &
-sleep 5
-npm test
+echo "* Running puppeteer tests ...";
+DISPLAY=:10 npm run linkchecker
 status=$?
 popd
 
