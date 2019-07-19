@@ -28,6 +28,7 @@ env:
     - PRESTASHOP_TEST_TYPE=unit
     - PRESTASHOP_TEST_TYPE=integration
     - PRESTASHOP_TEST_TYPE=e2e
+    - PRESTASHOP_TEST_TYPE=puppeteer
 
 matrix:
   include:
@@ -97,6 +98,10 @@ script:
 
   - if [ $PRESTASHOP_TEST_TYPE = "e2e" ]; then
         bash tests/check_e2e.sh;
+    fi
+
+  - if [ $PRESTASHOP_TEST_TYPE = "puppeteer" ]; then
+        bash tests/check_links.sh;
     fi
 
 after_script:
