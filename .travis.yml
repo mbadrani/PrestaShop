@@ -21,6 +21,7 @@ php:
   - 5.6
   - 7.2
 
+
 env:
   global:
     - SYMFONY_DEPRECATIONS_HELPER=disabled
