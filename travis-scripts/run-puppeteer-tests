@@ -7,7 +7,7 @@ PROJECT_PATH=$(cd "$( dirname "$0" )/../" && pwd)
 cd $PROJECT_PATH/tests/puppeteer && npm install
 
 echo "* Running puppeteer tests ...";
-DISPLAY=:10 HEADLESS=true URL_FO="http://localhost/" npm run linkchecker
+DISPLAY=:10 HEADLESS=true URL_FO="http://localhost/" URL_BO="http://localhost/admin-dev/" npm run linkchecker
 status=$?
 popd
 
