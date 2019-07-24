@@ -8,7 +8,7 @@ pushd $PROJECT_PATH/tests/puppeteer
 cp -n settings.travis.js settings.js
 npm install --silent
 echo "* Running puppeteer tests ...";
-DISPLAY=:10 npm run linkchecker
+DISPLAY=:10 HEADLESS=true URL_FO="http://localhost/" npm run linkchecker
 status=$?
 popd
 
